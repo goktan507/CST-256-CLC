@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<style>
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding-top: 10px;
+  text-align: center;
+}
+</style>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,7 +17,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ 'CST-256 CLC' }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -21,10 +31,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ 'CST-256 CLC' }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -64,6 +74,33 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    
+                                    <!-- Profile Tab Starts -->
+                                    
+                                    <a class="dropdown-item" href="/profile"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('profile').submit();">
+                                        Profile
+                                    </a>
+
+                                    <form id="profile" action="{{ action('UserController@getUserProfile') }}" method="GET" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    
+                                    <!-- Profile Tab Ends -->
+                                    <!-- Admin Tab Starts -->
+                                    
+                                    <a class="dropdown-item" href="/profile"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('admin').submit();">
+                                        Admin - Edit Users
+                                    </a>
+
+                                    <form id="admin" action="{{ action('UserController@getAllProfiles') }}" method="GET" style="display: none;">
+                                        @csrf
+                                    </form>
+                                    
+                                    <!-- Admin Tab Ends -->
                                 </div>
                             </li>
                         @endguest
@@ -72,9 +109,13 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        
     </div>
+    <main class="py-5">
+            @yield('content')
+    </main>
+    <div class="footer bg-dark text-light" >
+    @include('layouts.footer')
+	</div>
 </body>
 </html>
