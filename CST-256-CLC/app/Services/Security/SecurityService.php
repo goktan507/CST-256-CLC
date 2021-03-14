@@ -94,5 +94,9 @@ class SecurityService
     public function leaveGroup($groupID){
         return $this->dao->leaveGroup($groupID);   //passes the value to securityDAO
     }
+    
+    public function getJobsBySearch($search){
+        return $this->dao->getJobsBySearch($search);  //passes the value to securityDAO
+    }
 }
 

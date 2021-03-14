@@ -171,4 +171,24 @@ class UserController extends Controller
         $this->service->leaveGroup($groupID);     //passes the groupID that user is trying to leave
         return redirect('get_groups');  //redirects back to groups view
     }
+    
+    public function getJobsBySearch(){
+        $search = $_POST['search'];
+        $data = $this->service->getJobsBySearch($search);
+        if($data == 'getAll'){
+            return redirect('/get_jobs');
+        }
+        return view('jobs')->with('data', $data);
+    }
+    
+    public function viewJob(){
+        $data = [
+            'name' => $_POST['name'],
+            'email' => $_POST['email'],
+            'job' => $_POST['job'],
+            'skills' => $_POST['skills'],
+            'education' => $_POST['education']
+        ];
+        return view('viewJob')->with('data', $data);            
+    }
 }
