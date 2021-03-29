@@ -19,59 +19,64 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/profile', 'UserController@getUserProfile');
+Route::get('/profile', 'UserController@getUserProfile')->middleware('auth');
 
-Route::post('/update_profile', 'UserController@updateUserProfile');
+Route::post('/update_profile', 'UserController@updateUserProfile')->middleware('auth');
 
-Route::get('/get_profiles', 'UserController@getAllProfiles');
+Route::get('/get_profiles', 'UserController@getAllProfiles')->middleware('auth');
 
-Route::post('/edit_profile_admin', 'UserController@editSelectedProfile');
+Route::post('/edit_profile_admin', 'UserController@editSelectedProfile')->middleware('auth');
 
-Route::post('/update_profile_admin', 'UserController@adminUpdateSelectedProfile');
+Route::post('/update_profile_admin', 'UserController@adminUpdateSelectedProfile')->middleware('auth');
 
-Route::post('/suspend_profile_admin', 'UserController@adminSuspendProfile');
+Route::post('/suspend_profile_admin', 'UserController@adminSuspendProfile')->middleware('auth');
 
-Route::post('/delete_profile_admin', 'UserController@adminDeleteProfile');
+Route::post('/delete_profile_admin', 'UserController@adminDeleteProfile')->middleware('auth');
 
-Route::get('/get_portfolio', 'UserController@getPortfolio');
+Route::get('/get_portfolio', 'UserController@getPortfolio')->middleware('auth');
 
-Route::post('/update_portfolio', 'UserController@updatePortfolio');
+Route::post('/update_portfolio', 'UserController@updatePortfolio')->middleware('auth');
 
-Route::post('/edit_portfolio_admin', 'UserController@adminEditPortfolio');
+Route::post('/edit_portfolio_admin', 'UserController@adminEditPortfolio')->middleware('auth');
 
-Route::post('/update_portfolio_admin', 'UserController@adminUpdatePortfolio');
+Route::post('/update_portfolio_admin', 'UserController@adminUpdatePortfolio')->middleware('auth');
 
-Route::get('/get_jobs', 'UserController@getAllJobs');
+Route::get('/get_jobs', 'UserController@getAllJobs')->middleware('auth');
 
-Route::post('/delete_portfolio', 'UserController@deletePortfolio');
+Route::post('/delete_portfolio', 'UserController@deletePortfolio')->middleware('auth');
 
-Route::get('/get_groups', 'UserController@getAllGroups');
+Route::get('/get_groups', 'UserController@getAllGroups')->middleware('auth');
 
-Route::post('/delete_group', 'UserController@deleteGroup');
+Route::post('/delete_group', 'UserController@deleteGroup')->middleware('auth');
 
-Route::post('/edit_group', 'UserController@editGroup');
+Route::post('/edit_group', 'UserController@editGroup')->middleware('auth');
 
-Route::post('/update_group', 'UserController@updateGroup');
+Route::post('/update_group', 'UserController@updateGroup')->middleware('auth');
 
-Route::post('/create_group', 'UserController@createGroup');
+Route::post('/create_group', 'UserController@createGroup')->middleware('auth');
 
-Route::get('/get_create_group', 'UserController@getCreateGroup');
+Route::get('/get_create_group', 'UserController@getCreateGroup')->middleware('auth');
 
-Route::post('/join_group', 'UserController@joinGroup');
+Route::post('/join_group', 'UserController@joinGroup')->middleware('auth');
 
-Route::post('/leave_group', 'UserController@leaveGroup');
+Route::post('/leave_group', 'UserController@leaveGroup')->middleware('auth');
 
-Route::post('/get_jobs_search', 'UserController@getJobsBySearch');
+Route::post('/get_jobs_search', 'UserController@getJobsBySearch')->middleware('auth');
 
-Route::post('/view_job', 'UserController@viewJob');
+Route::post('/view_job', 'UserController@viewJob')->middleware('auth');
 
-
-
-
-
-
-
-
+//Rest API
+    
+    //User's Rest API
+    Route::get('/usersrest', 'UsersRestController@index');
+    Route::get('/usersrest/{id}', 'UsersRestController@show');
+    
+    //Job's Rest API
+    Route::get('/jobsrest', 'JobsRestController@index');
+    Route::get('/jobsrest/{search}', 'JobsRestController@show');
+    
+    //Group's Rest API
+    Route::get('/groupsrest', 'GroupsRestController@index');
 
 
 

@@ -11,6 +11,10 @@ class SecurityService
         $this->dao = new SecurityDAO();     //initializes the SecurityDAO on create of SecurityService
     }
     
+    ////////////////////////
+    //////User Profile//////
+    ////////////////////////
+    
     public function getUserProfile($userID){       
         return $this->dao->getUserProfile($userID); //passes the value to securityDAO
     }
@@ -22,6 +26,10 @@ class SecurityService
     public function getAllProfiles(){
         return $this->dao->getAllProfiles(); //passes the value to securityDAO
     }
+    
+    ////////////////////////
+    //////Admin Module//////
+    ////////////////////////
     
     public function editSelectedProfile($userID){
         return $this->dao->editSelectedProfile($userID); //passes the value to securityDAO
@@ -38,6 +46,10 @@ class SecurityService
     public function adminDeleteProfile($userID){
         return $this->dao->adminDeleteProfile($userID); //passes the value to securityDAO
     }
+    
+    ////////////////////////
+    /////User Portfolio/////
+    ////////////////////////
     
     public function getPortfolio($userID){
         return $this->dao->getPortfolio($userID); //passes the value to securityDAO
@@ -67,6 +79,10 @@ class SecurityService
         return $this->dao->isAdmin($userID); //passes the value to securityDAO
     }
     
+    ////////////////////////
+    //////Group Module//////
+    ////////////////////////
+    
     public function getAllGroups(){
         return $this->dao->getAllGroups();  //passes the request of getting all groups to securityDAO
     }
@@ -86,7 +102,7 @@ class SecurityService
     public function createGroup($data){
         return $this->dao->createGroup($data);   //passes the value to securityDAO
     }
-    
+   
     public function joinGroup($groupID){
         return $this->dao->joinGroup($groupID);   //passes the value to securityDAO
     }
@@ -94,6 +110,10 @@ class SecurityService
     public function leaveGroup($groupID){
         return $this->dao->leaveGroup($groupID);   //passes the value to securityDAO
     }
+    
+    ////////////////////////
+    ////// Job Search //////
+    ////////////////////////
     
     public function getJobsBySearch($search){
         return $this->dao->getJobsBySearch($search);  //passes the value to securityDAO

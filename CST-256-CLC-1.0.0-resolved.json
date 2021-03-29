@@ -1,0 +1,276 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is an API for CST256 CLC Project",
+    "version": "1.0.0",
+    "title": "CST-256-CLC API",
+    "contact": {
+      "email": "SBayraktar@my.gcu.edu"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "cst-256-clc.herokuapp.com",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "All",
+      "description": "For All Items"
+    },
+    {
+      "name": "Individual",
+      "description": "For Individual Items"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/usersrest": {
+      "get": {
+        "tags": [
+          "All"
+        ],
+        "summary": "Returns All users in the JSON formattized Rest API",
+        "description": "Using this URL, it will return all the Users registered to the application in json format\n",
+        "operationId": "getAllUsers",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Returned all users successfully",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserModel"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/usersrest/id": {
+      "get": {
+        "tags": [
+          "Individual"
+        ],
+        "summary": "Returns user with the id in the JSON formattized Rest API",
+        "description": "Using the URL, it will return the User with the id registered to the application in json format\n",
+        "operationId": "getUserProfile",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Returned requested user successfully",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/UserModel"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groupsrest": {
+      "get": {
+        "tags": [
+          "All"
+        ],
+        "summary": "Returns all groups in the JSON formattized Rest API",
+        "description": "Using this URL, it will return all the Groups created in the application in json format\n",
+        "operationId": "getAllGroups",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Returned all groups successfully",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GroupModel"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobsrest": {
+      "get": {
+        "tags": [
+          "All"
+        ],
+        "summary": "Returns all jobs in the JSON formattized Rest API",
+        "description": "Using this URL, it will return all the Job postings created to the application in json format\n",
+        "operationId": "getAllJobs",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Returned all Job postings successfully",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/JobsModel"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/jobsrest/search": {
+      "get": {
+        "tags": [
+          "Individual"
+        ],
+        "summary": "Returns all jobs matching with 'search' in the JSON formattized Rest API",
+        "description": "Using this URL, it will return all the matching Job postings created to the application in json format\n",
+        "operationId": "getJobsBySearch",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Returned all the matching Job postings successfully",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/JobsModel"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UserModel": {
+      "type": "object",
+      "required": [
+        "address",
+        "biography",
+        "email",
+        "id",
+        "name",
+        "password",
+        "role"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "Safa Bayraktar"
+        },
+        "email": {
+          "type": "string",
+          "example": "SBayraktar@my.gcu.edu"
+        },
+        "password": {
+          "type": "string",
+          "example": "$2y$10$mf9DBYxZobJr3LIOeWQUbOR8QBvjpGMskt1AAxMOXNzrbxMNcunxG"
+        },
+        "address": {
+          "type": "string",
+          "example": "3300 W Cameblcak Road, Phoenix, AZ, 85017"
+        },
+        "biography": {
+          "type": "string",
+          "example": "Computer Programming major in GCU"
+        },
+        "role": {
+          "type": "integer",
+          "example": "0 => \"Normal\" 1 => \"Admin\""
+        }
+      }
+    },
+    "GroupModel": {
+      "type": "object",
+      "required": [
+        "description",
+        "id",
+        "members",
+        "name",
+        "owner"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "CST-256 Programmers"
+        },
+        "description": {
+          "type": "string",
+          "example": "A Programming group of CST-256 students"
+        },
+        "owner": {
+          "type": "string",
+          "example": "Safa Bayraktar"
+        },
+        "members": {
+          "type": "array",
+          "example": [
+            "Safa Bayraktar",
+            "Jacob Cauthren"
+          ],
+          "items": {
+            "$ref": "#/definitions/UserModel"
+          }
+        }
+      }
+    },
+    "JobsModel": {
+      "type": "object",
+      "required": [
+        "education",
+        "email",
+        "id",
+        "job",
+        "name",
+        "skills"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "name": {
+          "type": "string",
+          "example": "Safa Bayraktar"
+        },
+        "email": {
+          "type": "string",
+          "example": "SBayraktar@my.gcu.edu"
+        },
+        "job": {
+          "type": "string",
+          "example": "PHP"
+        },
+        "skills": {
+          "type": "string",
+          "example": "Web Developer, Software Developer, Backend Developer"
+        },
+        "education": {
+          "type": "string",
+          "example": "Intern/Junior Dev"
+        }
+      }
+    }
+  }
+}

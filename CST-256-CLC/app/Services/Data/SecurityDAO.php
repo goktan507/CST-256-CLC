@@ -435,10 +435,10 @@ class SecurityDAO
     }    
     
     public function getJobsBySearch($search){
-        if($search == ""){
+        if($search == ""){          // if search is submitted without any text input, returns getAll function on controller
             return 'getAll';
         }
-        $this->dbQuery = "SELECT * FROM `portfolio` WHERE `job` LIKE '%$search%' OR `skills` LIKE '%$search%'";     //sql script gets all groups
+        $this->dbQuery = "SELECT * FROM `portfolio` WHERE `job` LIKE '%$search%' OR `skills` LIKE '%$search%'";     //sql script gets groups by search 
         $result = mysqli_query($this->connection, $this->dbQuery);
         $data = [];
         if (mysqli_num_rows($result) > 0) {
@@ -458,11 +458,11 @@ class SecurityDAO
                     'skills' => $row['skills'],
                     'education' => $row['education']
                 ];
-                array_push($data, $user);   //puts user array into a data array that will store all user and its portfolio
+                array_push($data, $user);   //puts user array into a data array that will store all user and its portfolio (job posting)
             }
             mysqli_free_result($result);
             mysqli_close($this->connection);
-            return $data; //returns all users' portfolios stored in data array
+            return $data; //returns all users' job postings stored in data array
         }
         mysqli_close($this->connection);
         return false;
