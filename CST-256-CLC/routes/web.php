@@ -1,5 +1,15 @@
 <?php
-
+/*
+ *  Project Name: CST-256-CLC - Version: 2.0 The End
+ *    Group Name: IDK
+ *   Module Name: Route Module
+ *   Programmers: Safa Bayraktar & Jacob Cauthren
+ *          Date: 4/17/2021
+ *
+ *      Route module handles all the pathing and routing between controllers and views.
+ *   middleware authentication is specified for required pages in this module to increse
+ *   page security by implementing page validation.
+ */
 /*
 |--------------------------------------------------------------------------
 | Web Routes

@@ -1,4 +1,15 @@
 <?php
+/*
+ *  Project Name: CST-256-CLC - Version: 2.0 The End
+ *    Group Name: IDK
+ *   Module Name: Security Module
+ *   Programmers: Safa Bayraktar & Jacob Cauthren
+ *          Date: 4/17/2021
+ *
+ *      Security Service handles all the data passes between data services and controllers. 
+ *   It's job is to ensure the database is in a secured environment and its credentials cannot
+ *   be reached from any view or controller.
+ */
 namespace App\Services\Security;
 
 use App\Services\Data\SecurityDAO;

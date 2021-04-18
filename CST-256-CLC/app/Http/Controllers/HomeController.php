@@ -1,4 +1,14 @@
 <?php
+/*
+ *  Project Name: CST-256-CLC - Version: 2.0 The End
+ *    Group Name: IDK
+ *   Module Name: Default Module
+ *   Programmers: Safa Bayraktar & Jacob Cauthren
+ *          Date: 4/17/2021
+ *
+ *      Home Controller is a default controller therefore it can be included as default module, 
+ *   this is where we set the account role into session.
+ */
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;

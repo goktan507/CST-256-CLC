@@ -1,4 +1,15 @@
 <?php
+/*
+ *  Project Name: CST-256-CLC - Version: 2.0 The End
+ *    Group Name: IDK
+ *   Module Name: Logging Module
+ *   Programmers: Safa Bayraktar & Jacob Cauthren
+ *          Date: 4/17/2021
+ *
+ *      Second MyLogger service that handles all the logging that is not
+ *   specified to store logs in certain folders, used to view logs on 
+ *   cloud hosting environment.
+ */
 
 namespace App\Services\Utility;
 

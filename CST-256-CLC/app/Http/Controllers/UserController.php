@@ -1,4 +1,14 @@
 <?php
+/*
+ *  Project Name: CST-256-CLC - Version: 2.0 The End
+ *    Group Name: IDK
+ *   Module Name: User Module
+ *   Programmers: Safa Bayraktar & Jacob Cauthren
+ *          Date: 4/17/2021
+ *          
+ *      User module contains all the user related operations.
+ */
+
 namespace App\Http\Controllers;
 
 use App\Services\Security\SecurityService;
@@ -287,12 +297,16 @@ class UserController extends Controller
                 'description' => $_POST['description'],
                 'userID' => Auth::user()->id
             ];
-            $this->service->createGroup($data); // passes the data array storing all information, to pass into security service to create group
+            if(!($data['name'] == "" || $data['description'] == ""))
+                $this->service->createGroup($data); // passes the data array storing all information, to pass into security service to create group
         } catch (Exception $e) {
             $this->logger->error($e);
         }
         $this->logger->info("Exiting UserController createGroup() redirecting get_groups");
-        return redirect('get_groups'); // redirects back to groups view
+        if(!($data['name'] == "" || $data['description'] == ""))
+            return redirect('get_groups'); // redirects back to groups view
+        else
+            return redirect('get_create_group');
     }
 
     public function joinGroup()

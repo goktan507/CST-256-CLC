@@ -1,5 +1,13 @@
 <?php
-
+/*
+ *  Project Name: CST-256-CLC - Version: 2.0 The End
+ *    Group Name: IDK
+ *   Module Name: Job's Rest Module
+ *   Programmers: Safa Bayraktar & Jacob Cauthren
+ *          Date: 4/17/2021
+ *
+ *      Job's Rest module returns all the Job Postings stored on Database in JSON formatized view.
+ */
 namespace App\Http\Controllers;
 
 use App\Models\DTO;

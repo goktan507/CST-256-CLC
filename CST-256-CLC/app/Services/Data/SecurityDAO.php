@@ -1,4 +1,15 @@
 <?php
+/*
+ *  Project Name: CST-256-CLC - Version: 2.0 The End
+ *    Group Name: IDK
+ *   Module Name: Data Module
+ *   Programmers: Safa Bayraktar & Jacob Cauthren
+ *          Date: 4/17/2021
+ *
+ *      Security DAO is where all the database connection and data pull/push occurs.
+ *   This is an isolated class using N-Layer architecture passing data through Security
+ *   Service to avoid direct connections between controllers and views.
+ */
 namespace App\Services\Data;
 
 use Illuminate\Support\Facades\Auth;

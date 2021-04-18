@@ -1,9 +1,15 @@
 <?php
-
+/*
+ *  Project Name: CST-256-CLC - Version: 2.0 The End
+ *    Group Name: IDK
+ *   Module Name: Logging Module
+ *   Programmers: Safa Bayraktar & Jacob Cauthren
+ *          Date: 4/17/2021
+ */
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Services\Data\Utility\MyLogger3;
+use App\Services\Utility\MyLogger3;
 
 class LoggingServiceProvider extends ServiceProvider
 {
